@@ -2,10 +2,11 @@ pipeline {
     agent any
 
     triggers {
-        pollSCM('* * * * *')   // Jenkins checks GitHub every 1 minute
+        pollSCM('* * * * *')   // Check GitHub every minute
     }
 
     stages {
+
         stage('Clone Repo') {
             steps {
                 echo "Cloning GitHub Repository..."
@@ -13,15 +14,31 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo "No build step required for static HTML portfolio"
+                script {
+                    echo "Building Docker image..."
+                    dockerImage = docker.build("portfolio:latest")
+                }
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy Container') {
             steps {
-                echo "Deployment step completed (example)..."
+                script {
+                    echo "Stopping old container if running..."
+                    // Stop + remove previous container safely
+                    sh '''
+                    docker stop portfolio || true
+                    docker rm  portfolio || true
+                    '''
+
+                    echo "Starting new container on port 5000..."
+                    // Run new container
+                    sh '''
+                    docker run -d -p 5000:80 --name portfolio portfolio:latest
+                    '''
+                }
             }
         }
     }
