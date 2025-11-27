@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parthipan M - Portfolio</title>
+    <!-- Devicon CDN for tech icons -->
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <style>
         * {
             margin: 0;
@@ -31,7 +34,7 @@
             z-index: -1;
             background-color: #f8f9fa;
         }
-        
+
         /* Ensure content is above the canvas */
         nav {
             position: relative;
@@ -39,8 +42,9 @@
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(2px);
         }
-        
-        .hero, .education-section {
+
+        .hero,
+        .education-section {
             position: relative;
             z-index: 1;
             background-color: rgba(255, 255, 255, 0.7);
@@ -152,19 +156,109 @@
 
         /* Hero Section */
         .hero {
-            min-height: calc(100vh - 82px);
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            padding: 2rem 2rem 2rem 5%;
+            padding: 0 5% 20vh;
+            position: relative;
+            z-index: 1;
             background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(2px);
+            backdrop-filter: blur(5px);
         }
 
         .hero-content {
-            text-align: left;
-            max-width: 800px;
+            flex: 1;
+            max-width: 50%;
+
+        }
+
+        /* Tech Globe Styles */
+        :root {
+            --accent-color: #e94560;
+        }
+
+        .globe-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            /* Perspective gives the 3D depth feel */
+            perspective: 1000px;
+        }
+
+        #globe {
+            position: relative;
             width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .tag {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            will-change: transform, opacity;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* Center the element on its own coordinate */
+            transform-origin: center center;
+            cursor: pointer;
+        }
+
+        .tag i {
+            font-size: 3.5rem;
+            /* Remove forced white color to allow 'colored' class to work */
+            /* color: #fff; */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            /* Reduced shadow intensity */
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .tag:hover i {
+            /* Remove color change on hover */
+            /* color: var(--accent-color); */
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            transform: scale(1.2);
+        }
+
+        /* Manual color fix for Jenkins if 'colored' class doesn't cover it */
+        .devicon-jenkins-plain.colored {
+            color: #D24939;
+        }
+
+        /* Optional: Add a subtle glow to the center background to enhance depth */
+        .globe-container::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                padding: 100px 5% 50px;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .globe-container {
+                height: 400px;
+                width: 100%;
+            }
         }
 
         .hero h1 {
@@ -221,13 +315,27 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeOut {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(-10px); }
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
         }
 
         /* Animated Button Styles */
@@ -359,7 +467,7 @@
             background-color: #ffffff;
             transition-duration: .3s;
         }
-        
+
         .containerOne:hover .githubSvg path {
             fill: #000000;
         }
@@ -404,6 +512,7 @@
                 transform: translateY(-50px);
                 opacity: 0;
             }
+
             100% {
                 transform: translateY(0);
                 opacity: 1;
@@ -443,23 +552,23 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // Simple particle effect
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             particlesJS('particles-js', {
                 particles: {
-                    number: { 
+                    number: {
                         value: 60,
                         density: {
                             enable: true,
                             value_area: 1000
                         }
                     },
-                    color: { 
-                        value: '#ff8c42' 
+                    color: {
+                        value: '#ff8c42'
                     },
-                    shape: { 
-                        type: 'circle' 
+                    shape: {
+                        type: 'circle'
                     },
-                    opacity: { 
+                    opacity: {
                         value: 0.8,
                         random: true,
                         anim: {
@@ -469,8 +578,8 @@
                             sync: false
                         }
                     },
-                    size: { 
-                        value: 4, 
+                    size: {
+                        value: 4,
                         random: true,
                         anim: {
                             enable: true,
@@ -499,22 +608,22 @@
                 interactivity: {
                     detect_on: 'window',
                     events: {
-                        onhover: { 
-                            enable: true, 
-                            mode: 'grab' 
+                        onhover: {
+                            enable: true,
+                            mode: 'grab'
                         },
-                        onclick: { 
-                            enable: true, 
-                            mode: 'push' 
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
                         },
                         resize: true
                     },
                     modes: {
-                        grab: { 
-                            distance: 150, 
-                            line_linked: { 
-                                opacity: 1 
-                            } 
+                        grab: {
+                            distance: 150,
+                            line_linked: {
+                                opacity: 1
+                            }
                         },
                         push: {
                             particles_nb: 6
@@ -526,6 +635,7 @@
         });
     </script>
 </head>
+
 <body>
     <!-- Particles.js container -->
     <div id="particles-js"></div>
@@ -554,12 +664,16 @@
             <div class="button-container">
                 <button class="animated-button">
                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                        <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                        </path>
                     </svg>
                     <span class="text">RESUME</span>
                     <span class="circle"></span>
                     <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                        <path
+                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                        </path>
                     </svg>
                 </button>
             </div>
@@ -567,28 +681,39 @@
             <div class="social-card">
                 <a class="socialContainer containerOne" href="https://github.com/Parthipan868" target="_blank">
                     <svg viewBox="0 0 24 24" class="socialSvg githubSvg">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                     </svg>
                 </a>
-                
-                <a class="socialContainer containerTwo" href="https://www.linkedin.com/in/parthipan-m-097051292/" target="_blank">
+
+                <a class="socialContainer containerTwo" href="https://www.linkedin.com/in/parthipan-m-097051292/"
+                    target="_blank">
                     <svg viewBox="0 0 448 512" class="socialSvg linkdinSvg">
-                        <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
+                        <path
+                            d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
+                        </path>
                     </svg>
                 </a>
-                
-                <a class="socialContainer containerThree" href="mailto:your.email@example.com" target="_blank" title="Email (update this link with your email)">
+
+                <a class="socialContainer containerThree" href="mailto:your.email@example.com" target="_blank"
+                    title="Email (update this link with your email)">
                     <svg viewBox="0 0 24 24" class="socialSvg mailSvg">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                     </svg>
                 </a>
-                
-                <a class="socialContainer containerFour" href="https://leetcode.com/u/Parthipan_Muthuswamy/" target="_blank">
+
+                <a class="socialContainer containerFour" href="https://leetcode.com/u/Parthipan_Muthuswamy/"
+                    target="_blank">
                     <svg viewBox="0 0 24 24" class="socialSvg leetcodeSvg" style="width: 20px; height: 20px;">
-                        <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.674 2.606c.514.515 1.365.497 1.94-.045.535-.507.474-1.365-.07-1.902l-2.84-2.693c-.586-.57-1.443-.867-2.341-.81-2.243.14-5.281.22-7.133 1.883-1.175 1.083-1.199 2.161-1.199 3.51 0 1.35.024 2.438 1.199 3.51 1.852 1.663 4.89 1.743 7.133 1.883.898.057 1.755-.24 2.34-.81l2.841-2.69c.544-.537.604-1.396.07-1.903-.574-.542-1.426-.56-1.94-.045zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z"/>
+                        <path
+                            d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.674 2.606c.514.515 1.365.497 1.94-.045.535-.507.474-1.365-.07-1.902l-2.84-2.693c-.586-.57-1.443-.867-2.341-.81-2.243.14-5.281.22-7.133 1.883-1.175 1.083-1.199 2.161-1.199 3.51 0 1.35.024 2.438 1.199 3.51 1.852 1.663 4.89 1.743 7.133 1.883.898.057 1.755-.24 2.34-.81l2.841-2.69c.544-.537.604-1.396.07-1.903-.574-.542-1.426-.56-1.94-.045zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z" />
                     </svg>
                 </a>
             </div>
+        </div>
+        <div class="globe-container">
+            <div id="globe"></div>
         </div>
     </section>
 
@@ -607,7 +732,7 @@
                         <p>CGPA: 8.21/10</p>
                     </div>
                 </div>
-                
+
                 <!-- Education Item 2 -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -615,7 +740,7 @@
                         <div class="timeline-date">2022 - 2023</div>
                         <h3>XII (Senior Secondary)</h3>
                         <h4>Bharani Vidhyalaya Sr Sec School (CBSE), Karur
-</h4>
+                        </h4>
                     </div>
                 </div>
 
@@ -626,7 +751,7 @@
                         <div class="timeline-date">2020 - 2021</div>
                         <h3>X (Secondary)</h3>
                         <h4>Bharani Vidhyalaya Sr Sec School (CBSE), Karur
-</h4>
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -641,7 +766,7 @@
             position: relative;
             text-align: center;
         }
-        
+
         .section-title {
             font-size: 3.5rem;
             font-weight: 700;
@@ -650,7 +775,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .education-section .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -787,13 +912,13 @@
             'Backend Developer',
             'DevOps Engineer',
         ];
-        
+
         let currentIndex = 0;
         const roleElement = document.getElementById('roleText');
 
         function rotateRole() {
             roleElement.style.animation = 'fadeOut 0.5s forwards';
-            
+
             setTimeout(() => {
                 currentIndex = (currentIndex + 1) % roles.length;
                 roleElement.textContent = roles[currentIndex];
@@ -806,7 +931,7 @@
             setInterval(rotateRole, 3000);
         }, 1000);
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -832,5 +957,184 @@
             highlightNav();
         });
     </script>
+    <script>
+        const tags = [
+            { icon: 'devicon-java-original' },
+            { icon: 'devicon-python-original' },
+            { icon: 'devicon-javascript-plain' },
+            { icon: 'devicon-react-original' },
+            { icon: 'devicon-nodejs-plain' },
+            { icon: 'devicon-html5-plain' },
+            { icon: 'devicon-css3-plain' },
+            { icon: 'devicon-docker-plain' },
+            { icon: 'devicon-git-plain' },
+            { icon: 'devicon-typescript-plain' },
+            { icon: 'devicon-angularjs-plain' },
+            { icon: 'devicon-vuejs-plain' },
+            { icon: 'devicon-amazonwebservices-original' },
+            { icon: 'devicon-kubernetes-plain' },
+            { icon: 'devicon-cplusplus-plain' },
+            { icon: 'devicon-csharp-plain' },
+            { icon: 'devicon-azure-plain' },
+            { icon: 'devicon-rust-plain' },
+            { icon: 'devicon-googlecloud-plain' },
+            { icon: 'devicon-mysql-original' },
+            { icon: 'devicon-mongodb-plain' },
+            { icon: 'devicon-redis-plain' },
+            { icon: 'devicon-linux-original' },
+            { icon: 'devicon-jenkins-plain' },
+            { icon: 'devicon-amazonwebservices-plain-wordmark' },
+            { icon: 'devicon-flutter-plain' },
+            { icon: 'devicon-kotlin-plain' },
+            { icon: 'devicon-swift-plain' },
+            { icon: 'devicon-ruby-plain' },
+            { icon: 'devicon-postgresql-plain' }
+        ];
+
+        const globe = document.getElementById('globe');
+        const container = document.querySelector('.globe-container');
+        const radius = 220; // Radius of the sphere
+        const elements = [];
+
+        // Initialize
+        function init() {
+            const phi = Math.PI * (3 - Math.sqrt(5)); // Golden angle
+
+            tags.forEach((tag, i) => {
+                const y = 1 - (i / (tags.length - 1)) * 2; // y goes from 1 to -1
+                const radiusAtY = Math.sqrt(1 - y * y); // Radius at y
+                const theta = phi * i; // Golden angle increment
+
+                const x = Math.cos(theta) * radiusAtY;
+                const z = Math.sin(theta) * radiusAtY;
+
+                const element = document.createElement('div');
+                element.className = 'tag';
+                element.innerHTML = `<i class="${tag.icon} colored"></i>`;
+
+                globe.appendChild(element);
+
+                elements.push({
+                    element,
+                    x: x * radius,
+                    y: y * radius,
+                    z: z * radius
+                });
+            });
+        }
+
+        // Animation state
+        let autoRotateX = 0.002; // Default rotation speed
+        let autoRotateY = 0.002;
+        let currentAngleX = 0;
+        let currentAngleY = 0;
+        let isDragging = false;
+        let previousMouseX = 0;
+        let previousMouseY = 0;
+
+        function animate() {
+            // If not dragging, apply auto rotation
+            if (!isDragging) {
+                currentAngleY = autoRotateY;
+                currentAngleX = autoRotateX;
+            }
+
+            const cx = Math.cos(currentAngleX);
+            const sx = Math.sin(currentAngleX);
+            const cy = Math.cos(currentAngleY);
+            const sy = Math.sin(currentAngleY);
+
+            elements.forEach(item => {
+                // Rotate around Y axis
+                let x = item.x * cy - item.z * sy;
+                let z = item.z * cy + item.x * sy;
+                let y = item.y;
+
+                // Rotate around X axis
+                let y_new = y * cx - z * sx;
+                let z_new = z * cx + y * sx;
+
+                // Update positions
+                item.x = x;
+                item.y = y_new;
+                item.z = z_new;
+
+                // Calculate scale and opacity based on Z (depth)
+                // z_new ranges roughly from -radius to +radius
+                // We want front items (positive z) to be larger and opaque
+                // Back items (negative z) to be smaller and transparent
+
+                const scale = (z_new + radius * 2.5) / (radius * 3.5);
+                const alpha = (z_new + radius) / (2 * radius) + 0.2; // Add base opacity
+
+                // Apply styles
+                // Translate from center (0,0) to screen coordinates
+                // We use translate3d for hardware acceleration
+                // Subtracting 50% of element size is handled by transform-origin or CSS centering
+                // Here we center the div at 0,0 in CSS (top:50%, left:50%) so we just translate x,y
+
+                item.element.style.transform = `translate3d(${x}px, ${y_new}px, 0) scale(${scale})`;
+                item.element.style.opacity = Math.min(1, Math.max(0.1, alpha));
+                item.element.style.zIndex = Math.floor(z_new + radius);
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Mouse Interaction
+        container.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            previousMouseX = e.clientX;
+            previousMouseY = e.clientY;
+            container.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+            container.style.cursor = 'default';
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - previousMouseX;
+                const deltaY = e.clientY - previousMouseY;
+
+                // Update rotation speed based on drag
+                currentAngleY = deltaX * 0.005;
+                currentAngleX = -deltaY * 0.005;
+
+                previousMouseX = e.clientX;
+                previousMouseY = e.clientY;
+            }
+        });
+
+        // Touch support for mobile
+        container.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            previousMouseX = e.touches[0].clientX;
+            previousMouseY = e.touches[0].clientY;
+        });
+
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                const deltaX = e.touches[0].clientX - previousMouseX;
+                const deltaY = e.touches[0].clientY - previousMouseY;
+
+                currentAngleY = deltaX * 0.005;
+                currentAngleX = -deltaY * 0.005;
+
+                previousMouseX = e.touches[0].clientX;
+                previousMouseY = e.touches[0].clientY;
+            }
+        });
+
+        init();
+        animate();
+    </script>
 </body>
+
 </html>
