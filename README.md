@@ -5,8 +5,8 @@ A modern, responsive portfolio website deployed across multiple cloud platforms.
 ## 🚀 Live Deployments
 
 - **Local (Docker)**: http://localhost:5000
-- **GitHub Pages**: https://parthipan868.github.io/Portfolio
-- **AWS S3**: (URL generated after Terraform deployment)
+- **GitHub Pages**: https://parthipan868.github.io/Portfolio-/
+- **AWS S3**: http://portfolio-arunp-parthipan-2025.s3-website-us-east-1.amazonaws.com
 
 ## 🛠️ Tech Stack
 
