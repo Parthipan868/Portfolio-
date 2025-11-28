@@ -7,6 +7,12 @@ terraform {
     }
   }
   required_version = ">= 1.0"
+
+  backend "s3" {
+    bucket = "terraform-state-portfolio-arunp"
+    key    = "portfolio/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 # Configure AWS Provider
