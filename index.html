@@ -14,6 +14,11 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
@@ -642,8 +647,8 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-left">
-            <div class="profile-photo">PM</div>
-            <div class="name">PARTHIPAN M</div>
+            <div class="profile-photo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">PM</div>
+            <div class="name" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">PARTHIPAN M</div>
         </div>
         <ul class="nav-links">
             <li><a href="#home">HOME</a></li>
@@ -761,7 +766,7 @@
     <!-- Rest of the code remains the same -->
     <style>
         .education-section {
-            padding: 5rem 5% 7rem;
+            padding: 1rem 5% 7rem;
             background-color: transparent;
             position: relative;
             text-align: center;
@@ -906,9 +911,313 @@
         }
     </style>
 
-    <script>
-        const roles = [
-            'Frontend Developer',
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">PROJECTS</h2>
+                <div class="header-underline"></div>
+                <p class="section-subtitle">Listing few projects</p>
+            </div>
+
+            <!-- Project Item 1: Portfolio -->
+            <div class="project-card">
+                <div class="project-image">
+                    <!-- Project Screenshot/Placeholder -->
+                    <div class="img-container">
+                        <img src="https://source.unsplash.com/random/800x450/?portfolio,code" alt="Portfolio Project"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <!-- Using a nice gradient overlay if image fails or to match style -->
+                        <div class="overlay">
+                            <h3>PARTHIPAN M</h3>
+                            <p>DevOps & Frontend</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Portfolio</h3>
+                    <p>Discover my portfolio demonstrating web development, DevOps, and cloud engineering skills with
+                        automated deployments.</p>
+                    <div class="project-buttons">
+                        <a href="#" class="btn btn-primary">LIVE DEMO</a>
+                        <a href="https://github.com/Parthipan868/Portfolio-" target="_blank"
+                            class="btn btn-secondary">CODE REPOSITORY</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Item 2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="img-container" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                        <img src="https://source.unsplash.com/random/800x450/?server,cloud" alt="Project 2"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="overlay">
+                            <h3>CLOUD ARCHITECTURE</h3>
+                            <p>AWS & Terraform</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Cloud Infrastructure Automation</h3>
+                    <p>Automated provisioning of scalable cloud infrastructure using Terraform and AWS services,
+                        ensuring high availability and fault tolerance.</p>
+                    <div class="project-buttons">
+                        <a href="#" class="btn btn-primary">LIVE DEMO</a>
+                        <a href="#" class="btn btn-secondary">CODE REPOSITORY</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Item 3 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="img-container" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+                        <img src="https://source.unsplash.com/random/800x450/?docker,container" alt="Project 3"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="overlay">
+                            <h3>CONTAINER ORCHESTRATION</h3>
+                            <p>Docker & Kubernetes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Microservices Deployment</h3>
+                    <p>Orchestrating microservices architecture using Docker containers and Kubernetes clusters for
+                        efficient resource management and scaling.</p>
+                    <div class="project-buttons">
+                        <a href="#" class="btn btn-primary">LIVE DEMO</a>
+                        <a href="#" class="btn btn-secondary">CODE REPOSITORY</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Item 4 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="img-container" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">
+                        <img src="https://source.unsplash.com/random/800x450/?react,dashboard" alt="Project 4"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="overlay">
+                            <h3>REACT DASHBOARD</h3>
+                            <p>Frontend Development</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Admin Analytics Dashboard</h3>
+                    <p>A comprehensive admin dashboard built with React.js, featuring real-time data visualization, user
+                        management, and detailed analytics reports.</p>
+                    <div class="project-buttons">
+                        <a href="#" class="btn btn-primary">LIVE DEMO</a>
+                        <a href="#" class="btn btn-secondary">CODE REPOSITORY</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Item 5 -->
+            <div class="project-card">
+                <div class="project-image">
+                    <div class="img-container" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <img src="https://source.unsplash.com/random/800x450/?api,backend" alt="Project 5"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="overlay">
+                            <h3>RESTFUL API</h3>
+                            <p>Backend System</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>E-commerce Backend API</h3>
+                    <p>Robust RESTful API for an e-commerce platform, handling user authentication, product inventory,
+                        and secure payment processing.</p>
+                    <div class="project-buttons">
+                        <a href="#" class="btn btn-primary">LIVE DEMO</a>
+                        <a href="#" class="btn btn-secondary">CODE REPOSITORY</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .projects-section {
+            padding: 1rem 5% 7rem;
+            background-color: transparent;
+            /* Keeping consistent with other sections */
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header .section-title {
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 2.5rem;
+        }
+
+        .header-underline {
+            width: 50px;
+            height: 4px;
+            background-color: #9d8ec3;
+            /* Matching the purple/lilac accent from user image */
+            margin: 0 auto 1.5rem;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .project-card {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto 5rem;
+        }
+
+        .project-image {
+            flex: 1.5;
+            /* Takes up more space as per image */
+            position: relative;
+            border-radius: 12px;
+            /* Smooth corners */
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            /* Placeholder gradient matching user image vibe */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.1;
+            /* Making the gradient dominant */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .img-container .overlay {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .img-container .overlay h3 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content {
+            flex: 1;
+        }
+
+        .project-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #000;
+            font-weight: 700;
+        }
+
+        .project-content p {
+            font-size: 1.1rem;
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .project-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 5px;
+            /* Less rounded, more blocky like image */
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #ff8c42;
+            /* Orange matching theme */
+            color: white;
+            border: none;
+            box-shadow: 0 4px 6px rgba(255, 140, 66, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 140, 66, 0.6);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: #ff8c42;
+            /* Orange matching theme */
+            color: white;
+            border: none;
+            box-shadow: 0 4px 6px rgba(255, 140, 66, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 140, 66, 0.6);
+            color: white;
+        }
+
+        @media (max-width: 1024px) {
+            .project-card {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .project-image,
+            .project-content {
+                flex: auto;
+                width: 100%;
+            }
+
+            .img-container {
+                height: 300px;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+        }
+    </style>
+
+    <script>const roles = ['Frontend Developer',
             'Backend Developer',
             'DevOps Engineer',
         ];
@@ -923,13 +1232,17 @@
                 currentIndex = (currentIndex + 1) % roles.length;
                 roleElement.textContent = roles[currentIndex];
                 roleElement.style.animation = 'fadeIn 0.8s forwards';
-            }, 500);
+            }
+
+                , 500);
         }
 
         setTimeout(() => {
             roleElement.style.animation = 'fadeIn 0.8s forwards';
             setInterval(rotateRole, 3000);
-        }, 1000);
+        }
+
+            , 1000);
 
         document.addEventListener('DOMContentLoaded', function () {
             const sections = document.querySelectorAll('section');
@@ -937,9 +1250,11 @@
 
             function highlightNav() {
                 let current = '';
+
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
+
                     if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
                         current = section.getAttribute('id');
                     }
@@ -947,7 +1262,12 @@
 
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
+
+                    if (link.getAttribute('href') === `#$ {
+                                    current
+                                }
+
+                                `) {
                         link.classList.add('active');
                     }
                 });
@@ -956,39 +1276,157 @@
             window.addEventListener('scroll', highlightNav);
             highlightNav();
         });
+
     </script>
-    <script>
-        const tags = [
-            { icon: 'devicon-java-original' },
-            { icon: 'devicon-python-original' },
-            { icon: 'devicon-javascript-plain' },
-            { icon: 'devicon-react-original' },
-            { icon: 'devicon-nodejs-plain' },
-            { icon: 'devicon-html5-plain' },
-            { icon: 'devicon-css3-plain' },
-            { icon: 'devicon-docker-plain' },
-            { icon: 'devicon-git-plain' },
-            { icon: 'devicon-typescript-plain' },
-            { icon: 'devicon-angularjs-plain' },
-            { icon: 'devicon-vuejs-plain' },
-            { icon: 'devicon-amazonwebservices-original' },
-            { icon: 'devicon-kubernetes-plain' },
-            { icon: 'devicon-cplusplus-plain' },
-            { icon: 'devicon-csharp-plain' },
-            { icon: 'devicon-azure-plain' },
-            { icon: 'devicon-rust-plain' },
-            { icon: 'devicon-googlecloud-plain' },
-            { icon: 'devicon-mysql-original' },
-            { icon: 'devicon-mongodb-plain' },
-            { icon: 'devicon-redis-plain' },
-            { icon: 'devicon-linux-original' },
-            { icon: 'devicon-jenkins-plain' },
-            { icon: 'devicon-amazonwebservices-plain-wordmark' },
-            { icon: 'devicon-flutter-plain' },
-            { icon: 'devicon-kotlin-plain' },
-            { icon: 'devicon-swift-plain' },
-            { icon: 'devicon-ruby-plain' },
-            { icon: 'devicon-postgresql-plain' }
+    <script>const tags = [{
+            icon: 'devicon-java-original'
+        }
+
+            ,
+        {
+            icon: 'devicon-python-original'
+        }
+
+            ,
+        {
+            icon: 'devicon-javascript-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-react-original'
+        }
+
+            ,
+        {
+            icon: 'devicon-nodejs-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-html5-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-css3-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-docker-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-git-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-typescript-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-angularjs-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-vuejs-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-amazonwebservices-original'
+        }
+
+            ,
+        {
+            icon: 'devicon-kubernetes-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-cplusplus-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-csharp-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-azure-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-rust-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-googlecloud-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-mysql-original'
+        }
+
+            ,
+        {
+            icon: 'devicon-mongodb-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-redis-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-linux-original'
+        }
+
+            ,
+        {
+            icon: 'devicon-jenkins-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-amazonwebservices-plain-wordmark'
+        }
+
+            ,
+        {
+            icon: 'devicon-flutter-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-kotlin-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-swift-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-ruby-plain'
+        }
+
+            ,
+        {
+            icon: 'devicon-postgresql-plain'
+        }
+
         ];
 
         const globe = document.getElementById('globe');
@@ -1010,7 +1448,7 @@
 
                 const element = document.createElement('div');
                 element.className = 'tag';
-                element.innerHTML = `<i class="${tag.icon} colored"></i>`;
+                element.innerHTML = `<i class="${tag.icon} colored" ></i>`;
 
                 globe.appendChild(element);
 
@@ -1054,25 +1492,25 @@
                 let y_new = y * cx - z * sx;
                 let z_new = z * cx + y * sx;
 
+                // Normalize the vector to prevent floating point error accumulation (collapsing)
+                const distance = Math.sqrt(x * x + y_new * y_new + z_new * z_new);
+                if (distance > 0) {
+                    const scaleFactor = radius / distance;
+                    x *= scaleFactor;
+                    y_new *= scaleFactor;
+                    z_new *= scaleFactor;
+                }
+
                 // Update positions
                 item.x = x;
                 item.y = y_new;
                 item.z = z_new;
 
                 // Calculate scale and opacity based on Z (depth)
-                // z_new ranges roughly from -radius to +radius
-                // We want front items (positive z) to be larger and opaque
-                // Back items (negative z) to be smaller and transparent
-
                 const scale = (z_new + radius * 2.5) / (radius * 3.5);
-                const alpha = (z_new + radius) / (2 * radius) + 0.2; // Add base opacity
+                const alpha = (z_new + radius) / (2 * radius) + 0.2;
 
                 // Apply styles
-                // Translate from center (0,0) to screen coordinates
-                // We use translate3d for hardware acceleration
-                // Subtracting 50% of element size is handled by transform-origin or CSS centering
-                // Here we center the div at 0,0 in CSS (top:50%, left:50%) so we just translate x,y
-
                 item.element.style.transform = `translate3d(${x}px, ${y_new}px, 0) scale(${scale})`;
                 item.element.style.opacity = Math.min(1, Math.max(0.1, alpha));
                 item.element.style.zIndex = Math.floor(z_new + radius);
