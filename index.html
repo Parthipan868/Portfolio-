@@ -229,6 +229,16 @@
             transform: scale(1.2);
         }
 
+        .tag img {
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
+        }
+
+        .tag:hover img {
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+            transform: scale(1.2);
+        }
+
         /* Manual color fix for Jenkins if 'colored' class doesn't cover it */
         .devicon-jenkins-plain.colored {
             color: #D24939;
@@ -1278,155 +1288,38 @@
         });
 
     </script>
-    <script>const tags = [{
-            icon: 'devicon-java-original'
-        }
-
-            ,
-        {
-            icon: 'devicon-python-original'
-        }
-
-            ,
-        {
-            icon: 'devicon-javascript-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-react-original'
-        }
-
-            ,
-        {
-            icon: 'devicon-nodejs-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-html5-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-css3-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-docker-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-git-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-typescript-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-angularjs-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-vuejs-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-amazonwebservices-original'
-        }
-
-            ,
-        {
-            icon: 'devicon-kubernetes-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-cplusplus-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-csharp-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-azure-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-rust-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-googlecloud-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-mysql-original'
-        }
-
-            ,
-        {
-            icon: 'devicon-mongodb-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-redis-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-linux-original'
-        }
-
-            ,
-        {
-            icon: 'devicon-jenkins-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-amazonwebservices-plain-wordmark'
-        }
-
-            ,
-        {
-            icon: 'devicon-flutter-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-kotlin-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-swift-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-ruby-plain'
-        }
-
-            ,
-        {
-            icon: 'devicon-postgresql-plain'
-        }
-
+    <script>
+        const tags = [
+            { icon: 'https://img.icons8.com/color/96/java-coffee-cup-logo--v1.png', isSvg: true },
+            { icon: 'devicon-python-original' },
+            { icon: 'devicon-javascript-plain' },
+            { icon: 'devicon-react-original' },
+            { icon: 'devicon-nodejs-plain' },
+            { icon: 'devicon-html5-plain' },
+            { icon: 'devicon-css3-plain' },
+            { icon: 'devicon-docker-plain' },
+            { icon: 'devicon-git-plain' },
+            { icon: 'devicon-typescript-plain' },
+            { icon: 'devicon-angularjs-plain' },
+            { icon: 'devicon-vuejs-plain' },
+            { icon: 'devicon-amazonwebservices-original' },
+            { icon: 'devicon-kubernetes-plain' },
+            { icon: 'devicon-cplusplus-plain' },
+            { icon: 'devicon-csharp-plain' },
+            { icon: 'devicon-azure-plain' },
+            { icon: 'devicon-rust-plain' },
+            { icon: 'devicon-googlecloud-plain' },
+            { icon: 'devicon-mysql-original' },
+            { icon: 'devicon-mongodb-plain' },
+            { icon: 'devicon-redis-plain' },
+            { icon: 'devicon-linux-original' },
+            { icon: 'devicon-jenkins-plain' },
+            { icon: 'devicon-amazonwebservices-plain-wordmark' },
+            { icon: 'devicon-flutter-plain' },
+            { icon: 'devicon-terraform-plain' },
+            { icon: 'devicon-swift-plain' },
+            { icon: 'devicon-ruby-plain' },
+            { icon: 'devicon-postgresql-plain' }
         ];
 
         const globe = document.getElementById('globe');
@@ -1448,7 +1341,11 @@
 
                 const element = document.createElement('div');
                 element.className = 'tag';
-                element.innerHTML = `<i class="${tag.icon} colored" ></i>`;
+                if (tag.isSvg) {
+                    element.innerHTML = `<img src="${tag.icon}" style="width: 3.5rem; height: 3.5rem;" />`;
+                } else {
+                    element.innerHTML = `<i class="${tag.icon} colored"></i>`;
+                }
 
                 globe.appendChild(element);
 
@@ -1492,25 +1389,25 @@
                 let y_new = y * cx - z * sx;
                 let z_new = z * cx + y * sx;
 
-                // Normalize the vector to prevent floating point error accumulation (collapsing)
-                const distance = Math.sqrt(x * x + y_new * y_new + z_new * z_new);
-                if (distance > 0) {
-                    const scaleFactor = radius / distance;
-                    x *= scaleFactor;
-                    y_new *= scaleFactor;
-                    z_new *= scaleFactor;
-                }
-
                 // Update positions
                 item.x = x;
                 item.y = y_new;
                 item.z = z_new;
 
                 // Calculate scale and opacity based on Z (depth)
+                // z_new ranges roughly from -radius to +radius
+                // We want front items (positive z) to be larger and opaque
+                // Back items (negative z) to be smaller and transparent
+
                 const scale = (z_new + radius * 2.5) / (radius * 3.5);
-                const alpha = (z_new + radius) / (2 * radius) + 0.2;
+                const alpha = (z_new + radius) / (2 * radius) + 0.2; // Add base opacity
 
                 // Apply styles
+                // Translate from center (0,0) to screen coordinates
+                // We use translate3d for hardware acceleration
+                // Subtracting 50% of element size is handled by transform-origin or CSS centering
+                // Here we center the div at 0,0 in CSS (top:50%, left:50%) so we just translate x,y
+
                 item.element.style.transform = `translate3d(${x}px, ${y_new}px, 0) scale(${scale})`;
                 item.element.style.opacity = Math.min(1, Math.max(0.1, alpha));
                 item.element.style.zIndex = Math.floor(z_new + radius);
