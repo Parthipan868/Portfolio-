@@ -8,6 +8,8 @@
     <!-- Devicon CDN for tech icons -->
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <style>
+        @import url('https://db.onlinewebfonts.com/c/7403ec90e14eab424bc9912bf141a802?family=Quentin');
+
         * {
             margin: 0;
             padding: 0;
@@ -283,10 +285,13 @@
         }
 
         .hero h1 .name {
+            font-family: 'Quentin', cursive, sans-serif;
             color: #ff8c42;
-            font-size: 4.5rem;
-            font-weight: 800;
+            font-size: 6rem;
+            font-weight: normal;
             letter-spacing: 1px;
+            text-transform: none;
+            display: inline-block;
         }
 
         .hero h2 {
@@ -674,10 +679,10 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Hi There, I'm <span class="name">PARTHIPAN M</span></h1>
+            <h1>Hi There, I'm <span class="name">Parthipan M</span></h1>
             <div class="role-container">
                 <p>I Am Into</p>
-                <div class="role-text" id="roleText">Frontend & DevOps Engineer</div>
+                <div class="role-text" id="roleText">Frontend Developer</div>
             </div>
             <div class="button-container">
                 <a href="23CSR156_Parthipan_M.pdf" download="23CSR156_Parthipan_M.pdf" class="animated-button"
@@ -1718,6 +1723,14 @@
                     </div>
                     <p class="cert-name">Develop With DevOps</p>
                 </a>
+                <a href="23CSR156-JAVA%20SE17.pdf" target="_blank" class="certificate-card">
+                    <div class="cert-img-container">
+                        <img src="images/cert-java-se-17.png"
+                            onerror="this.onerror=null; this.src='../../../../../.gemini/antigravity/brain/86945d27-060e-4710-a2e5-58243f006f36/media__1780493179545.png';"
+                            alt="23CSR156-JAVA SE 17">
+                    </div>
+                    <p class="cert-name">23CSR156-JAVA SE 17</p>
+                </a>
             </div>
         </div>
     </section>
@@ -1733,6 +1746,15 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 3rem;
             max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Center the lone card when odd number and match other card sizes */
+        .certifications-grid>.certificate-card:last-child {
+            grid-column: 1 / -1;
+            justify-self: center;
+            width: 100%;
+            max-width: calc((100% - 3rem) / 2);
             margin: 0 auto;
         }
 
@@ -1817,6 +1839,10 @@
             .certifications-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .certifications-grid>.certificate-card:last-child {
+                max-width: 100%;
             }
         }
     </style>
