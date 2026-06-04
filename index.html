@@ -662,7 +662,7 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-left">
-            <div class="profile-photo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <div class="profile-photo" id="navbarProfilePhoto">
                 <img src="MY%20PHOTO.jpg" alt="PM"
                     style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
             </div>
@@ -2074,6 +2074,106 @@
             }
         }
     </style>
+    <!-- Profile Photo Modal Overlay -->
+    <div id="profile-modal" class="profile-modal-overlay">
+        <div class="profile-modal-content">
+            <img src="MY%20PHOTO.jpg" alt="Parthipan M" class="profile-modal-img">
+            <h2 class="profile-modal-name">Parthipan M</h2>
+        </div>
+    </div>
+
+    <style>
+        /* Profile Photo Modal Styles */
+        .profile-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), backdrop-filter 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .profile-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .profile-modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            transform: scale(0.7);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .profile-modal-overlay.active .profile-modal-content {
+            transform: scale(1);
+        }
+
+        .profile-modal-img {
+            width: min(350px, 80vw);
+            height: min(350px, 80vw);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff8c42;
+            box-shadow: 0 10px 45px rgba(255, 140, 66, 0.35), 0 0 25px rgba(0, 0, 0, 0.5);
+            background-color: #ffffff;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-modal-img:hover {
+            transform: scale(1.02);
+        }
+
+        .profile-modal-name {
+            font-family: 'Quentin', cursive, sans-serif;
+            color: #ff8c42;
+            font-size: 4rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.5s ease 0.15s, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s;
+            text-transform: none;
+        }
+
+        .profile-modal-overlay.active .profile-modal-name {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profilePhoto = document.getElementById('navbarProfilePhoto');
+            const profileModal = document.getElementById('profile-modal');
+
+            if (profilePhoto && profileModal) {
+                profilePhoto.addEventListener('click', (e) => {
+                    profileModal.classList.add('active');
+                });
+
+                profileModal.addEventListener('click', () => {
+                    profileModal.classList.remove('active');
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
