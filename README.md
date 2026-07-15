@@ -64,8 +64,6 @@ terraform plan
 terraform apply
 ```
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
-
 ## 📋 Prerequisites
 
 - **Docker** (for local deployment)
@@ -103,7 +101,6 @@ Portfolio/
 ├── index.html                  # Main portfolio page
 ├── Dockerfile                  # Docker configuration
 ├── Jenkinsfile                 # Jenkins pipeline
-├── DEPLOYMENT.md               # Deployment guide
 └── README.md                   # This file
 ```
 
@@ -118,7 +115,6 @@ Portfolio/
 
 ## 📚 Documentation
 
-- [Deployment Guide](DEPLOYMENT.md) - Complete setup and deployment instructions
 - [Terraform Configuration](terraform/) - Infrastructure as Code files
 
 ## 🤝 Contributing
